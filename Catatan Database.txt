@@ -1,0 +1,164 @@
+Sistem E-Office
+
+	Tbl_mahasiswa
+		npm_mhs				163510038
+		email_mhs
+		password_mhs
+		nama_lengkap
+		jenis_kelamin
+		tanggal_lahir
+		tempat_lahir
+		alamat
+		status_akun
+		waktu_registrasi
+
+
+	Tbl_operator
+		ops_id
+		level
+		nama_lengkap
+		jenis_kelamin
+		no_handphone
+		email_opr
+		password_opr
+		foto_profil
+		alamat
+		status_akun
+		waktu_registrasi
+
+	Tbl_jenis_surat
+		jnsurat_id
+		kode_surat
+		judul_surat
+		keterangan_surat
+		status_surat
+			- dibuka
+			- ditutup
+
+	Tbl_akademik
+		thn_id
+		tahun
+		semester
+		status_tahun
+
+	Tbl_pertanyaan_diskusi
+		perdis_id
+		jenis_user
+			- mahasiswa
+			- operator
+		user_id 			[Id User yang membuat diskusi]
+		jenis_perdis
+			- diskusi / pertanyaan umum
+			- private diskusi
+		tujuan_id			[Jika pertanyaan bersifat privat maka ditujukan pada siapa pertanyaan tersebut]
+		diskusi_id 			[Id awal mula diskusi]
+		waktu
+
+	Tbl_suratonline
+		surat_id
+		npm_mhs
+		tujuan_surat		[Tujuan pengajuan surat]
+		nomor_surat
+		status_surat
+			- belum-diproses
+			- sedang-diproses
+			- selesai-diproses
+			- batal-diproses
+		file_pengajuan
+		file_hasil
+		validasi_surat
+		waktu_validasi
+		waktu_pengajuan_surat
+
+	Tbl_riwayat_surat
+		riwayat_id
+		posisi_surat		[Posisi pengajuan surat pada siapa ]
+		status_posisi_surat	[Mengecek ID posisi apakah sedang pada operator atau dikembalikan pada mahasiswa]
+			- operator
+			- mahasiswa
+		tindakan_disposisi
+			- Untuk Diketahui
+			- Untuk diperhatikan
+			- Untuk dipelajari
+			- Disiapkan jawaban
+			- Jawab langsung
+			- ACC untuk ditindak lanjuti
+			- Ambil langkah selanjutnya
+			- Dibicarakan
+			- Dilaporkan
+			- Segera diselesaikan
+			- Copy untuk
+			- Arsip
+		keterangan
+		file_surat
+		teruskan_surat
+		waktu
+
+	Tbl_alur_surat 
+		- alursurat_id
+		- surat_id
+		- alur_surat
+
+		Riwayat Alur Pengajuan Surat
+		Penggunaan View
+		Penggunaan Template
+		Penggunaan Tahun Akademik
+		Penggunaan Nomor Surat, Otomatis []
+
+	Hasil Suratnya apakah menggunakan template ?
+
+
+Nama Mahasiswa
+
+	Jenis Surat
+		Izin Riset
+		Surat Keterangan Plagiasi Skripsi 
+		Surat Keterangan Tidak Menerima BEASISWA dari Pihak Lain
+		Surat Bebas Administrasi, Pustaka dan Serah Terima Skripsi
+		Penerbitan KHS
+		Pernyataan Magang
+		Rekomendasi Magang
+		SKL
+		Surat Aktif Kuliah
+		Kunjungan Mahasiswa
+
+
+
+		- Untuk Diketahui
+- Untuk diperhatikan
+- Untuk dipelajari
+- Disiapkan jawaban
+- Jawab langsung
+- ACC untuk ditindak lanjuti
+- Ambil langkah selanjutnya
+- Dibicarakan
+- Dilaporkan
+- Segera diselesaikan
+- Copy untuk
+- Arsip
+
+
+
+Menu Mahasiswa 
+	- Dashboard
+	- Pengajuan Surat
+	- Riwayat Pengajuan Surat
+	-Akun/ Profile
+
+Menu Admin
+	- Dashboard 
+	- Data Pengajuan Surat
+		- Surat Menunggu 
+		- Surat Diproses
+		- Surat Selesai 
+		- Surat Ditolak
+	- Data Petugas / User
+	- Data Mahasiswa
+	- Tahun Akademik
+	- Jenis Surat
+	- Pertanyaan & Diskusi 
+
+
+	Buatkan konsep dari alur sistem surat yang harus diproses jika surat tersebut memiliki proses ya
+
+	Mahasiswa - Operator - Dekan - Operator - Mahasiswa

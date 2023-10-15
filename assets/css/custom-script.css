@@ -1,0 +1,20 @@
+#loading-ajax{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    text-indent: 100%;
+    background: #e0e0e0 url('../images/loading.gif') no-repeat center;
+    z-index: 1;
+    opacity: 0.6;
+    background-size: 20%;
+}
+
+.custom-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #949494;
+    cursor: pointer;
+    color: #fff;
+}

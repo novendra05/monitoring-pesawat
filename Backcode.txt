@@ -1,0 +1,108 @@
+SELECT jamter_id, tanggalwaktu_terbang, data_pesawat.*, data_pengguna.nama_lengkap 
+FROM data_jam_terbang 
+INNER JOIN data_pengguna 
+ON data_jam_terbang.pengguna_id = data_pengguna.pengguna_id 
+INNER JOIN data_pesawat 
+ON data_jam_terbang.pesawat_id = data_pesawat.pesawat_id 
+WHERE jamter_id = '$jamter_id'
+
+
+
+
+
+
+{
+    "status": "success",
+    "code": 200,
+    "title": "BERHASIL",
+    "message": "Data ditemukan",
+    "data": {
+        "pesawat_id": "e37dcad6-866b-4d7f-bc31-8b55d258e840",
+        "kode_pesawat": "XP001",
+        "nomor_registrasi": "AXCPX006",
+        "nama_pesawat": "Latik",
+        "max_lifetime": "2000 jam",
+        "total_time_inair": "0",
+        "time_since_overhaul": "0",
+        "aircraft_time": "0 menit",
+        "engine_time": "0 menit",
+        "engine_numberlanding": "0",
+        "propeller_time": "0 menit",
+        "gambar_pesawat": "-",
+        "keterangan": "-",
+        "riwayat_maintenance": "{\"mt50\":0,\"mt100\":0,\"mt300\":0,\"mt400\":0,\"mt500\":0,\"mt1000\":0,\"mt2000\":0}",
+        "status_pesawat": "aktif"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+ // Form Pilih Jam Terbang Halaman Maintenance Pesawat
+  $("#nomor_registrasi").on("change", function() 
+  {
+      var selectedValue = $(this).val();
+
+      // Buat permintaan AJAX ke server
+      $.ajax({
+          url: "../konfigurasi/ajax-script.php",
+          method: "post",
+          data: { nomor_registrasi: selectedValue, form: 'ajax-check-pesawat' },
+          dataType: "json",
+          success: function(response) {
+              // Isi input dengan data yang diterima dari server
+              if (response.status === 'success') {
+                $("#kode_pesawat").val(response.data.kode_pesawat);
+                $("#nama_pesawat").val(response.data.nama_pesawat);
+                $("#max_lifetime").val(response.data.max_lifetime);
+
+                $("#sisa-aircraft").val(response.data.aircraft_time);
+                $("#sisa-engine").val(response.data.engine_time);
+                $("#sisa-propeller").val(response.data.propeller_time);
+                $("#waktu_diudara").val(0);
+              }
+              else{
+                toastNotif(response.status, response.message, response.title);
+              }
+          },
+          error: function(xhr, status, error) {
+              console.error("Error fetching data:", error);
+          }
+      });
+  });
+
+
+  elseif ($_POST['form'] == 'ajax-check-pesawat' && !empty($_POST['nomor_registrasi'])) 
+        { 
+            $pesawat_id  = $_POST['nomor_registrasi'];
+            $queryCheck  = mysqli_query($connect, "SELECT * FROM data_pesawat WHERE pesawat_id = '$pesawat_id' " ) or die (mysqli_error($connect));
+            $dataPesawat = mysqli_fetch_assoc($queryCheck);
+
+            if (!empty($dataPesawat)) {
+                
+                $dataPesawat['max_lifetime']   = $dataPesawat['max_lifetime'] . ' jam';
+                $dataPesawat['aircraft_time']  = konversiMenit($dataPesawat['aircraft_time']);
+                $dataPesawat['engine_time']    = konversiMenit($dataPesawat['engine_time']);
+                $dataPesawat['propeller_time'] = konversiMenit($dataPesawat['propeller_time']);
+                
+                echo json_encode(responseAjax('success', 200,  'BERHASIL', 'Data ditemukan', $dataPesawat));
+            }
+             else{
+                echo json_encode(responseAjax('error', 200,  'ERROR', 'Data yang anda inputkan tidak ditemukan', NULL));
+                exit;
+             }
+        }
+
+
+
+((50 - ($total_time_inair % 50)) / 50) * 100, perhitungan 50 jam
+((100 - ($total_time_inair % 100)) / 100) * 100, perhitungan 100 jam
+((300 - ($total_time_inair % 300)) / 300) * 100, perhitungan 300 jam
+((400 - ($total_time_inair % 400)) / 400) * 100, perhitungan 400 jam

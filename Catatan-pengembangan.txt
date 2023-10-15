@@ -1,0 +1,211 @@
+
+
+Database
+
+    tbl_users
+        level_users
+            > admin
+            > pilot
+            > enginer
+            > supervisor
+
+    tbl_pesawat
+        pesawat_id
+        kode_pesawat
+        nama_pesawat
+        jam_max_penerbangan
+        jumlah_waktu_penerbangan
+        sisa_waktu_penerbangan
+
+
+    tbl_riwayat_pesawat
+
+    tbl_maintenance_log
+
+    tbl_aircraft_log
+
+    tbl_engine_log
+
+    tbl_propeller_log
+
+
+Notifikasi Log Tambahan - Dikirim ke teknisi
+
+
+
+
+
+2000 / 50   = 40
+2000 / 100  = 20
+2000 / 300  = 6.6
+2000 / 400  = 5
+2000 / 500  = 4
+2000 / 1000 = 2
+2000 / 2000 = 1
+
+
+
+Variabel 
+$jam = 48;
+$jam = 97;
+$jam = 152;
+$jam = 199;
+
+$data = [
+            [
+                'status' => 'maintenance',
+                'jam'    => 45,
+            ],
+            [
+                'status' => 'maintenance',
+                'jam'    => 97,
+            ]
+        ];
+
+
+0 - 50 
+Batas Toleransi 5 : 
+                    Min     : 45 - 50
+                    Kritis  : 50 - 55
+
+
+'50 jam', '100 jam', '300 jam', '400 jam', '500 jam', '1000 jam', '2000 jam'                    , 
+
+
+
+
+
+data_maintenanceinspection
+    minspect_id
+    jenis_inspeksi ['50jam', '100jam', '300jam', '400jam', '500jam', '1000jam', '2000jam']
+    
+    pesawat_id
+    aircraft_jam
+    engine_jam
+    propeller_jam
+    landing_jumlah
+    tanggal_inspeksi
+    catatan_inspeksi
+    teknisi_id
+    waktu_ditambahkan
+
+function checkMaintenance($nilaiJam, $kelipatan, $toleransi, $maintenance_terakhir = NULL)
+	{
+		$nilaiJam           = $nilaiJam /60;
+		$jumlah_maintenance = 1;
+
+		if ($kelipatan == 50) {
+			$jumlah_maintenance = 40;
+		}
+		elseif ($kelipatan == 100) {
+			$jumlah_maintenance = 20;
+		}
+		elseif ($kelipatan == 300) {
+			$jumlah_maintenance = 60;
+		}
+		elseif ($kelipatan == 400) {
+			$jumlah_maintenance = 5;
+		}
+		elseif ($kelipatan == 500) {
+			$jumlah_maintenance = 4;
+		}
+		elseif ($kelipatan == 1000) {
+			$jumlah_maintenance = 2;
+		}
+		elseif ($kelipatan == 2000) {
+			$jumlah_maintenance = 1;
+		}
+
+		if($nilaiJam < 2000)
+		{
+			for ($i=1; $i <= $jumlah_maintenance; $i++) 
+			{ 
+				if ($nilaiJam >= ($kelipatan * $i) && $nilaiJam <= (($kelipatan * $i) + 0.9)) {
+					if ($maintenance_terakhir >= (($kelipatan * $i) - $toleransi) && $maintenance_terakhir <= (($kelipatan * $i) + $toleransi)) {
+						echo 'Telah dilakukan maintenance pesawat1';
+					}
+					else{
+						echo 'Jam masuk dalam range segera maintenance - ' . $nilaiJam;			
+					}
+				}
+				elseif ($nilaiJam >= (($kelipatan * $i) - $toleransi) && $nilaiJam <= ($kelipatan * $i) - 1) 
+				{
+					if ($maintenance_terakhir >= (($kelipatan * $i) - $toleransi) && $maintenance_terakhir <= (($kelipatan * $i) + $toleransi)) {
+						echo 'Telah dilakukan maintenance pesawat2';
+					}
+					else{
+						echo 'Jam masuk dalam range rekomendasi maintenance - ' . $nilaiJam;
+					}
+				}
+				elseif ($nilaiJam >= (($kelipatan * $i) + 1) && $nilaiJam <= ($kelipatan * $i) + $toleransi) 
+				{
+					if ($maintenance_terakhir >= (($kelipatan * $i) - $toleransi) && $maintenance_terakhir <= (($kelipatan * $i) + $toleransi)) {
+						echo 'Telah dilakukan maintenance pesawat3';
+					}
+					else{
+						echo 'Jam masuk dalam range wajib di maintenance segera - ' . $nilaiJam;
+					}
+				}
+				// elseif ($nilaiJam > (($kelipatan * $i) + $toleransi) && $nilaiJam <= (($kelipatan * $i) * 2 - 10)) {
+				// 	echo 'PESAWAT HARUS DIMAINTENANCE - ' . $nilaiJam;
+				// }
+			}
+		}
+		else{
+			echo 'Lifetime pesawat telah melebihi batas pemakaian';
+		}
+	}
+
+
+	function statusMain($terbangmenit, $menitmaintenance_terakhir, $toleransi_jam, $kelipatan)
+	{
+		$jamterbang         = $terbangmenit / 60;
+		$jammaintenancesblm = $menitmaintenance_terakhir/ 60;
+		$looptime 			= 0;
+		$notifikasi         = NULL;
+
+		if ($kelipatan == 50) 
+			$looptime = 40;		
+		elseif ($kelipatan == 100) 
+			$looptime = 20;		
+		elseif ($kelipatan == 300) 
+			$looptime = 60;		
+		elseif ($kelipatan == 400) 
+			$looptime = 5;		
+		elseif ($kelipatan == 500) 
+			$looptime = 4;		
+		elseif ($kelipatan == 1000) 
+			$looptime = 2;		
+		elseif ($kelipatan == 2000) 
+			$looptime = 1;		
+
+		for ($i=1; $i <= $looptime; $i++) 
+		{ 
+			$toleransi_minimum = $kelipatan * $i - $toleransi_jam;
+			$toleransi_maximum = $kelipatan * $i + $toleransi_jam;
+			echo 'Jam Terbang : ' . $jamterbang . ' -- [' . $toleransi_minimum . ' & ' . $toleransi_maximum . ']<br>';
+
+			if ($jamterbang >= $toleransi_minimum && $jamterbang <= $toleransi_maximum) 
+			{
+				echo 'Berada di pengecekan [' . $i . '] - ' . $kelipatan*$i;
+				if ($jammaintenancesblm >= $toleransi_minimum && $jammaintenancesblm <= $toleransi_maximum)  
+				{
+					echo '<br>' . 'Periode ini telah melakukan maintenance <br>';
+				}
+				else{
+					echo '<br>' . 'Periode ini belum melakukan maintenance ';
+				}
+				exit;
+			}
+			else{
+				// echo '-';
+			}
+
+			// echo $kelipatan * $i . '<br>';
+			// echo $kelipatan * $i - $toleransi_jam. '<br>';
+			echo '<br>';
+		}
+		
+		
+
+	}
