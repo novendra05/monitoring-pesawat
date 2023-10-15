@@ -5,7 +5,7 @@
 	session_start();
 
 	// Set variabel koneksi database
-	$db_host     = 'localhost';
+	$db_host     = 'localhost1';
 	$db_user     = 'root';
 	$db_password = '';
 	$db_name     = 'db_monitorpesawat';
