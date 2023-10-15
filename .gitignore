@@ -1,4 +1,4 @@
-# /vendor/
+/vendor/
 # node_modules/
 # npm-debug.log
 # yarn-error.log
@@ -21,4 +21,4 @@
 # Homestead.json
 # /.vagrant
 # .phpunit.result.cache
-/konfigurasi/koneksi.php
+/konfigurasi/
