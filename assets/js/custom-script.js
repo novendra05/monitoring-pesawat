@@ -31,7 +31,40 @@
         "pageLength": 50,
         "columnDefs": [
           {
-            "targets": [1, 2, 3, 4, 5], // Daftar kolom yang tidak diizinkan untuk diurutkan
+            "targets": [1, 2, 3, 4], // Daftar kolom yang tidak diizinkan untuk diurutkan
+            "orderable": false
+          }
+        ]
+      });
+
+      $('#customTableLap').DataTable({
+        //"order": [[0, "desc"]], // Menentukan kolom pertama (index 0) diurutkan secara descending
+        "pageLength": 50,
+        "columnDefs": [
+          {
+            "targets": [1, 2, 3, 4], // Daftar kolom yang tidak diizinkan untuk diurutkan
+            "orderable": false
+          }
+        ]
+      });
+
+      $('#riwayatMT').DataTable({
+        //"order": [[0, "desc"]], // Menentukan kolom pertama (index 0) diurutkan secara descending
+        "pageLength": 50,
+        "columnDefs": [
+          {
+            "targets": [1, 2, 3, 4], // Daftar kolom yang tidak diizinkan untuk diurutkan
+            "orderable": false
+          }
+        ]
+      });
+
+      $('#riwayatPT').DataTable({
+        //"order": [[0, "desc"]], // Menentukan kolom pertama (index 0) diurutkan secara descending
+        "pageLength": 50,
+        "columnDefs": [
+          {
+            "targets": [1, 2, 3, 4], // Daftar kolom yang tidak diizinkan untuk diurutkan
             "orderable": false
           }
         ]

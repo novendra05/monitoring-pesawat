@@ -231,10 +231,11 @@
                                     </div>
 
                                     <!-- RIWAYAT PENERBANGAN -->
-                                    <div class="tab-pane" id="riwayat-penerbangan" role="tabpanel">
+                                    <div class="tab-pane " id="riwayat-penerbangan" role="tabpanel">
                                         <h4 class="card-title mb-5 mt-3">Riwayat Penerbangan</h4>
 
-                                        <table id="customTable" class="custom-table table table-bordered table-striped  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <div class="table-responsive">
+                                            <table id="" class=" table table-bordered table-striped  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead class="thead-dark">
                                             <tr>
                                                 <th class="align-middle text-center" >No.</th>
@@ -263,6 +264,7 @@
                                             <?php endforeach; ?>
                                             </tbody>
                                         </table>
+                                        </div>
                                     </div>
 
                                     <!-- TAMBAH MAINTENANCE -->
@@ -276,6 +278,7 @@
                                         <?php endif; ?>
                                             
                                         <h4 class="card-title mb-2 mt-3">Riwayat Maintenance</h4>
+                                        <div class="table-responsive">
                                         <table id="" class="customTable custom-table table table-bordered table-striped  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead class="thead-dark">
                                             <tr>
@@ -309,6 +312,7 @@
                                                 </tr>
                                             <?php endforeach; ?></tbody>
                                         </table>
+                                        </div>
 
 
                                     </div>

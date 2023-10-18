@@ -66,7 +66,8 @@
                                 <div class="tab-pane active" id="data-mainlog" role="tabpanel">
                                     <h4 class="card-title mb-5 mt-3">Tabel Data Maintenance Log</h4>
 
-                                    <table id="" class="custom-table table table-bordered table-striped  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <div class="table-responsive">
+                                    <table id="customTable" class=" table table-bordered table-striped  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead class="thead-dark">
                                         <tr>
                                             <th class="text-center text-uppercase font-weight-bold" >Tgl</th>
@@ -95,6 +96,7 @@
                                         <?php endforeach; ?>
                                         </tbody>
                                     </table>
+                                    </div>
                                     <strong>*Klik data untuk melihat detail penerbangan</strong>
                                 </div>
                                 

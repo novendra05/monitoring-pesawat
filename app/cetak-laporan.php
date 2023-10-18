@@ -84,7 +84,7 @@
 
                         <h4 class="card-title mb-5">Data Laporan Maintenance</h4>
 
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="customTableLap" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
                                 <th class="text-center text-uppercase font-weight-bold" width="5%">No.</th>
