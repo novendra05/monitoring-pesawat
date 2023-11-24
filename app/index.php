@@ -125,7 +125,7 @@
                     <div class="row no-gutters align-items-center ">
                         <div class="col-md-4">
                             <a href="<?= BASE_URL . 'app/pesawat?id=' . $value["pesawat_id"] ; ?>">
-                                <img class="card-img img-fluid" src="<?= BASE_URL; ?>assets/images/small/img-1.jpg" alt="Card image">
+                                <img class="card-img img-fluid" src="<?= BASE_URL; ?>assets/images/pesawat/<?= $value['gambar_pesawat']; ?>" alt="Card image">
                             </a>
                         </div>
                         <div class="col-md-8 ">

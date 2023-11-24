@@ -9,11 +9,9 @@
     }
 
     $maininspectID   = $_GET['id'];
-    $query       = mysqli_query($connect, "SELECT data_maintenanceinspection.* , data_pesawat.nama_pesawat, data_pesawat.nomor_registrasi, data_pesawat.max_lifetime, data_pesawat.kode_pesawat
-                                            FROM data_maintenanceinspection 
-                                            INNER JOIN data_pesawat 
-                                            ON data_maintenanceinspection.pesawat_id = data_maintenanceinspection.pesawat_id
-                                            WHERE minspect_id = '$maininspectID' " ) or die (mysqli_error($connect));
+    $query       = mysqli_query($connect, "SELECT *
+                                            FROM data_pesawat 
+                                            WHERE pesawat_id = '$maininspectID' " ) or die (mysqli_error($connect));
     $pesawatData = mysqli_fetch_assoc($query);
     $pesawatID   = $pesawatData['pesawat_id'];
 
