@@ -49,21 +49,66 @@
                             <div class="form-group row">
                                 <label for="max_lifetime" class="col-md-2 col-form-label">Lifetime</label>
                                 <div class="col-md-5">
-                                    <input class="form-control" type="number" id="max_lifetime" name="max_lifetime" placeholder="lifetime" required>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Jam</div>
+                                        </div>
+                                        <input class="form-control text-center" type="number" id="max_lifetime" name="max_lifetime" value="0" min="0" required>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="total_time_inair" class="col-md-2 col-form-label">Total Time in Air</label>
-                                <div class="col-md-5">
-                                    <input class="form-control" type="number" id="total_time_inair" name="total_time_inair" placeholder="total time in air" required>
-                                </div>
+                                <!-- <div class="col-md-5"> -->
+                                    <!-- <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Jam</div>
+                                        </div>
+                                        <input class="form-control" type="number" id="total_time_inair" name="total_time_inair" placeholder="total time in air" required>
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                        <div class="input-group-text">@</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                                    </div> -->
+                                    <div class="col-auto">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Jam</div>
+                                            </div>
+                                            <input type="number" class="form-control text-center" name="total_jam" id="total_jam" value="0" min="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">                                        
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Menit</div>
+                                            </div>
+                                            <input type="number" class="form-control text-center" name="total_menit" id="total_menit" value="0" min="0">
+                                        </div>
+                                    </div>
+                                <!-- </div> -->
                             </div>
 
                             <div class="form-group row">
                                 <label for="time_since_overhaul" class="col-md-2 col-form-label">Time Since Overhaul</label>
-                                <div class="col-md-5">
-                                    <input class="form-control" type="number" id="time_since_overhaul" name="time_since_overhaul" placeholder="time since overhaul" required>
+                                <div class="col-auto">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Jam</div>
+                                        </div>
+                                        <input type="number" class="form-control text-center" name="overhaul_jam" id="overhaul_jam" value="0" min="0" >
+                                    </div>
+                                </div>
+                                <div class="col-auto">                                        
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Menit</div>
+                                        </div>
+                                        <input type="number" class="form-control text-center" name="overhaul_menit" id="overhaul_menit" value="0" min="0" >
+                                    </div>
                                 </div>
                             </div>
 

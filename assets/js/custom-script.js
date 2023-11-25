@@ -767,3 +767,78 @@
         }
     }); 
   }
+
+  function checkMaintenanceValue() {
+    // Ambil nilai dari elemen dengan id "jenis_maintenance"
+    var jenisLaporanSelect = document.getElementById('jenis_laporan');
+    var jenisMaintenanceSelect = document.getElementById('jenis_maintenance');
+    
+    // Tentukan nilai yang ingin dicek (misalnya: 'maintenance')
+    var nilaiMaintenance = 'maintenance';
+    
+    // Periksa apakah nilai sama dengan 'maintenance'
+    if (jenisLaporanSelect.value !== nilaiMaintenance) {
+        // Jika tidak sama, atur disabled menjadi true
+        jenisMaintenanceSelect.disabled = true;
+    } else {
+        // Jika sama, hilangkan disabled
+        jenisMaintenanceSelect.disabled = false;
+    }
+  }
+
+ 
+
+document.getElementById('total_menit').addEventListener('input', function () {
+  var totalMenitInput = this;
+
+  // Periksa apakah inputan memiliki nilai
+  if (totalMenitInput.value !== '') {
+      // Batasi nilai maksimal menjadi 59
+      var inputValue = parseInt(totalMenitInput.value, 10);
+      if (inputValue > 59) {
+          totalMenitInput.value = 59;
+      }
+  } else {
+      // Set nilai menjadi 0 jika input kosong dan cursor tidak berada di dalam input
+      totalMenitInput.value = 0;
+  }
+});
+
+// Event listener untuk menangkap perubahan fokus (blur) pada input
+document.getElementById('total_menit').addEventListener('blur', function () {
+  var totalMenitInput = this;
+
+  // Set nilai menjadi 0 jika input kosong saat cursor tidak berada di dalam input
+  if (totalMenitInput.value === '') {
+      totalMenitInput.value = 0;
+  }
+});
+
+document.getElementById('overhaul_menit').addEventListener('input', function () {
+  var overhaulMenitInput = this;
+
+  // Periksa apakah inputan memiliki nilai
+  if (overhaulMenitInput.value !== '') {
+      // Batasi nilai maksimal menjadi 59
+      var inputValue = parseInt(overhaulMenitInput.value, 10);
+      if (inputValue > 59) {
+          overhaulMenitInput.value = 59;
+      }
+  } else {
+      // Set nilai menjadi 0 jika input kosong dan cursor tidak berada di dalam input
+      overhaulMenitInput.value = 0;
+  }
+});
+
+// Event listener untuk menangkap perubahan fokus (blur) pada input
+document.getElementById('overhaul_menit').addEventListener('blur', function () {
+  var overhaulMenitInput = this;
+
+  // Set nilai menjadi 0 jika input kosong saat cursor tidak berada di dalam input
+  if (overhaulMenitInput.value === '') {
+      overhaulMenitInput.value = 0;
+  }
+});
+
+
+

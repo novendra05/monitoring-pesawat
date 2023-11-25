@@ -153,7 +153,7 @@
                                                     <tr>
                                                         <th scope="row" >Time Since Overhaul</th>
                                                         <td >:</td>
-                                                        <td ><?= $pesawatData['time_since_overhaul']; ?></td>
+                                                        <td ><?= konversiMenit($pesawatData['time_since_overhaul']); ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row" >Waktu Aircraft</th>

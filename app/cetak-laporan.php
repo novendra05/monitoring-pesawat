@@ -14,7 +14,7 @@
     
 
         <div class="row">
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-8 offset-lg-2">
                 
 
                 
@@ -38,10 +38,37 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="jenis_laporan" class="col-md-2 col-form-label">Jenis Laporan</label>
+                                <div class="col-md-10">
+                                    <select class="form-control select2" name="jenis_laporan" id="jenis_laporan" required onchange="checkMaintenanceValue()">
+                                        <option selected disabled hidden value="">-- Pilih Jenis Laporan --</option>
+                                        <option value="penerbangan">Penerbangan</option>
+                                        <option value="maintenance">Maintenance</option>
+                                        <option value="laporanpesawat">Laporan Pesawat</option>
+                                    </select>
+                                    <input type="hidden" name="laporan" value="tanggal">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="jenis_maintenance" class="col-md-2 col-form-label">Jenis Maintenance</label>
+                                <div class="col-md-10">
+                                    <select class="form-control select2" name="jenis_maintenance" id="jenis_maintenance" required>
+                                        <option selected disabled hidden value="">-- Pilih Jenis Maintenance --</option>
+                                        <option value="semua">Semua</option>
+                                        <option value="engine">Engine</option>
+                                        <option value="propeller">Propeller</option>
+                                        <option value="aircraft">Aircraft</option>
+                                    </select>
+                                    <input type="hidden" name="laporan" value="tanggal">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="awal" class="col-md-2 col-form-label">Tanggal Awal</label>
                                 <div class="col-md-10">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="awal" data-provide="datepicker" data-date-format="dd M, yyyy" required>
+                                        <input type="text" class="form-control" name="awal" data-provide="datepicker" data-date-format="dd M, yyyy" >
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                         </div>
@@ -53,7 +80,7 @@
                                 <label for="akhir" class="col-md-2 col-form-label">Tanggal Akhir</label>
                                 <div class="col-md-10">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="akhir" data-provide="datepicker" data-date-format="dd M, yyyy" required>
+                                        <input type="text" class="form-control" name="akhir" data-provide="datepicker" data-date-format="dd M, yyyy" >
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                         </div>
@@ -108,7 +135,7 @@
                                     <td class="align-middle text-center"><?= konversiMenit($value['total_time_inair']); ?></td>
                                     <td class="align-middle"><?= $value['keterangan']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a href="generate-laporan?pesawat=<?= $value['pesawat_id']; ?>&laporan=semua" target="_blank" class="btn btn-success">
+                                        <a href="generate-laporan?pesawat=<?= $value['pesawat_id']; ?>&laporan=tanggal&jenis_laporan=maintenance&laporan=tanggal&jenis_maintenance=semua&laporan=tanggal&awal=&akhir=" target="_blank" class="btn btn-success">
                                             <i class="fas fa-download"></i>
                                         </a>
                                     </td>
